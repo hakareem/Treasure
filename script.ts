@@ -5,10 +5,10 @@ class Hunt{
 }
 
 let screenLog = <HTMLElement>document.querySelector('#screen-log');
-document.addEventListener('click', mouseClick);
+document.addEventListener('click', click);
 
 let tries = 0
-function mouseClick(e:MouseEvent){    
+function click(e:MouseEvent){    
   screenLog.innerText = `
     Screen X/Y: ${e.screenX}, ${e.screenY}
     Client X/Y: ${e.clientX}, ${e.clientY}`;
@@ -29,10 +29,10 @@ function mouseClick(e:MouseEvent){
     }else if (distance < 100 && distance>50){
         myAlert("Very Close")
     }else if(distance <50){
-        treasureBox.style.display = '';
-        treasureBox.style.position = "absoulte";
-        treasureBox.style.left = treasureX + "px"
-        treasureBox.style.top = treasureY + "px"
+        chest.style.display = '';
+        chest.style.position = "absoulte";
+        chest.style.left = treasureX + "px"
+        chest.style.top = treasureY + "px"
         myAlert(`YAY YOU GOT IT IN ${tries} TRIES!`)
         setTimeout(resetGame,3000)
     }
@@ -41,12 +41,12 @@ function mouseClick(e:MouseEvent){
 }
 
 
-let treasureBox = <HTMLElement>document.getElementById("chest")
-treasureBox.style.display = 'none'
-let treasureX = Math.random()* 1200
-let treasureY = Math.random()* 700
-treasureBox.style.left = treasureX + "px"
-treasureBox.style.top = treasureY + "px"
+let chest = <HTMLElement>document.getElementById("chest")
+chest.style.display = 'none'
+let treasureX = Math.random()* window.innerWidth
+let treasureY = Math.random()* window.innerHeight
+chest.style.left = treasureX + "px"
+chest.style.top = treasureY + "px"
 
 let getDistance = function (event:MouseEvent, treasureX:number, treasureY:number):number {
     let diffX = event.offsetX - treasureX;
@@ -57,8 +57,8 @@ let getDistance = function (event:MouseEvent, treasureX:number, treasureY:number
 
 
 function myAlert(msg:string){
-    let message = <HTMLElement>document.getElementById("message")
-    message.innerHTML = msg
+    let output = <HTMLElement>document.getElementById("result")
+    output.innerHTML = msg
 }
 
 function resetGame(){

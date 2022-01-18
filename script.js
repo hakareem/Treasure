@@ -7,9 +7,9 @@ class Hunt {
     }
 }
 let screenLog = document.querySelector('#screen-log');
-document.addEventListener('click', mouseClick);
+document.addEventListener('click', click);
 let tries = 0;
-function mouseClick(e) {
+function click(e) {
     screenLog.innerText = `
     Screen X/Y: ${e.screenX}, ${e.screenY}
     Client X/Y: ${e.clientX}, ${e.clientY}`;
@@ -33,21 +33,21 @@ function mouseClick(e) {
         myAlert("Very Close");
     }
     else if (distance < 50) {
-        treasureBox.style.display = '';
-        treasureBox.style.position = "absoulte";
-        treasureBox.style.left = treasureX + "px";
-        treasureBox.style.top = treasureY + "px";
+        chest.style.display = '';
+        chest.style.position = "absoulte";
+        chest.style.left = treasureX + "px";
+        chest.style.top = treasureY + "px";
         myAlert(`YAY YOU GOT IT IN ${tries} TRIES!`);
         setTimeout(resetGame, 3000);
     }
     tries += 1;
 }
-let treasureBox = document.getElementById("chest");
-treasureBox.style.display = 'none';
-let treasureX = Math.random() * 1200;
-let treasureY = Math.random() * 700;
-treasureBox.style.left = treasureX + "px";
-treasureBox.style.top = treasureY + "px";
+let chest = document.getElementById("chest");
+chest.style.display = 'none';
+let treasureX = Math.random() * window.innerWidth;
+let treasureY = Math.random() * window.innerHeight;
+chest.style.left = treasureX + "px";
+chest.style.top = treasureY + "px";
 let getDistance = function (event, treasureX, treasureY) {
     let diffX = event.offsetX - treasureX;
     let diffY = event.offsetY - treasureY;
@@ -55,8 +55,8 @@ let getDistance = function (event, treasureX, treasureY) {
     return distance;
 };
 function myAlert(msg) {
-    let message = document.getElementById("message");
-    message.innerHTML = msg;
+    let output = document.getElementById("result");
+    output.innerHTML = msg;
 }
 function resetGame() {
     document.location.reload();
