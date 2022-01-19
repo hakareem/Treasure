@@ -9,7 +9,7 @@ document.addEventListener('click', click);
 
 let tries = 0
 function click(e:MouseEvent){    
-  screenLog.innerText = `
+screenLog.innerText = `
     Screen X/Y: ${e.screenX}, ${e.screenY}
     Client X/Y: ${e.clientX}, ${e.clientY}`;
     let num = 0;
