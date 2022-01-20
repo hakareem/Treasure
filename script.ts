@@ -1,7 +1,7 @@
 "use script"
 class Hunt{
-    x:number = Math.ceil((Math.random()*150)+300)
-    y:number = Math.ceil((Math.random()*900))
+    // x:number = Math.ceil((Math.random()*150)+300)
+    // y:number = Math.ceil((Math.random()*900))
 }
 
 let screenLog = <HTMLElement>document.querySelector('#screen-log');
@@ -14,7 +14,7 @@ screenLog.innerText = `
     Client X/Y: ${e.clientX}, ${e.clientY}`;
     let num = 0;
     screenLog.style.color = "white"
-    screenLog.style.bottom = num + "px";
+    // screenLog.style.bottom = num + "px";
 
 
     let distance = getDistance(e,treasureX, treasureY)
@@ -31,8 +31,8 @@ screenLog.innerText = `
     }else if(distance <50){
         chest.style.display = '';
         chest.style.position = "absoulte";
-        chest.style.left = treasureX + "px"
-        chest.style.top = treasureY + "px"
+        chest.style.left = treasureX - 45 + "px"
+        chest.style.top = treasureY - 100 + "px"
         myAlert(`YAY YOU GOT IT IN ${tries} TRIES!`)
         setTimeout(resetGame,3000)
     }
@@ -45,8 +45,8 @@ let chest = <HTMLElement>document.getElementById("chest")
 chest.style.display = 'none'
 let treasureX = Math.random()* window.innerWidth
 let treasureY = Math.random()* window.innerHeight
-chest.style.left = treasureX + "px"
-chest.style.top = treasureY + "px"
+chest.style.left = treasureX -100+ "px"
+chest.style.top = treasureY -500 + "px"
 
 let getDistance = function (event:MouseEvent, treasureX:number, treasureY:number):number {
     let diffX = event.offsetX - treasureX;
